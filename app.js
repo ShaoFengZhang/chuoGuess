@@ -1,13 +1,12 @@
 import Loginfunc from './utils/loginfunc.js';
 
 App({
-    onLaunch: function () {
+    onLaunch: function() {
         let _this = this;
     },
 
-    onShow: function (options) {
+    onShow: function(options) {
         let _this = this;
-        
     },
 
     globalData: {
