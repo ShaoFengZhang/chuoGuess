@@ -1,0 +1,202 @@
+.bg {
+    overflow: hidden;
+    background-color: #ffe0e0;
+}
+
+.curtainTop, .curtain {
+    width: 750rpx;
+    height: 572rpx;
+}
+
+.curtainTop {
+    position: relative;
+}
+
+.fireworks {
+    width: 514rpx;
+    height: 192rpx;
+    position: absolute;
+    left: 122rpx;
+    top: 162rpx;
+}
+
+.crown {
+    width: 88rpx;
+    height: 60rpx;
+    position: absolute;
+    top: 133rpx;
+    left: 334rpx;
+}
+
+.userTitle, .userTitle image {
+    width: 154rpx;
+    height: 154rpx;
+}
+
+.userTitle {
+    border: 4rpx solid rgb(249, 201, 47);
+    overflow: hidden;
+    border-radius: 50%;
+    position: absolute;
+    top: 185rpx;
+    left: 298rpx;
+}
+
+.succeedsText {
+    width: 486rpx;
+    height: 60rpx;
+    position: absolute;
+    top: 421rpx;
+    left: 132rpx;
+}
+
+.userName {
+    width: 100%;
+    text-align: center;
+    font-size: 30rpx;
+    color: #161616;
+    position: absolute;
+    top: 352rpx;
+}
+
+.clearanceRedBaoBox, .clearanceRedBaoBox image {
+    width: 650rpx;
+    height: 164rpx;
+    margin: 24rpx auto 40rpx;
+}
+
+.clearanceRedBaoBox {
+    position: relative;
+    height: 200rpx;
+    box-sizing: border-box;
+    padding: 0;
+}
+
+.receive {
+    width: 190rpx;
+    height: 104rpx;
+    position: absolute;
+    top: 54rpx;
+    right: 0;
+}
+
+#doubleShare {
+    width: 190rpx;
+    height: 104rpx;
+    padding: 0;
+    background-color: rgba(255, 255, 255, 0);
+    outline: none;
+    color: rgba(255, 255, 255, 0);
+}
+
+.button-hover {
+    color: rgba(255, 255, 255, 0);
+    background-color: rgba(255, 255, 255, 0);
+}
+
+.receive image {
+    width: 180rpx;
+    height: 74rpx;
+    position: relative;
+    top: -8rpx;
+}
+
+.amount {
+    width: 326rpx;
+    height: 164rpx;
+    position: absolute;
+    top: 24rpx;
+    left: 130rpx;
+    text-align: center;
+}
+
+.amounttop {
+    top: 66rpx;
+}
+
+.renminbi {
+    color: white;
+    font-size: 40rpx;
+    position: relative;
+    top: -20rpx;
+}
+
+.amountNum {
+    color: white;
+    font-size: 100rpx;
+    height: 74rpx;
+    line-height: 74rpx;
+}
+
+.doubleTxt {
+    text-align: center;
+    font-size: 30rpx;
+    color: white;
+    margin: 16rpx auto 16rpx;
+}
+
+.redBaoMaskBox {
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.normalRedBao {
+    width: 688rpx;
+    height: 894rpx;
+    position: absolute;
+    top: 180rpx;
+    left: 31rpx;
+}
+
+.customsTxt {
+    width: 100%;
+    text-align: center;
+    color: white;
+    position: absolute;
+    top: 472rpx;
+    left: 0;
+}
+
+.redBaoNumBox {
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    top: 567rpx;
+    left: 0;
+}
+
+.redBaoNum {
+    color: white;
+    font-size: 184rpx;
+}
+
+.yuan {
+    color: white;
+    font-size: 46rpx;
+}
+
+.btnBox {
+    width: 100%;
+    position: absolute;
+    top: 901rpx;
+    left: 0rpx;
+    text-align: center;
+}
+
+.btnBox image {
+    width: 280rpx;
+    height: 114rpx;
+    margin-right: 28rpx;
+}
+
+.doubleRedBao {
+    width: 688rpx;
+    height: 934rpx;
+    position: absolute;
+    top: 140rpx;
+    left: 31rpx;
+}

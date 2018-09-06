@@ -1,0 +1,55 @@
+<view class="bg">
+
+    <view class='curtainTop' >
+        <image class='curtain' src='/assets/player/bitTopCurtain.png' />
+
+        <view class='firstUser'>
+            <image class='fistUserImg' src='{{firstUsre[0].avatar_url || "/assets/usercenter/userImg.jpg"}}' />
+            <image class='crownImg' src='/assets/player/crown.png' />
+            <text class='NO1'>1</text>
+        </view>
+        <view class='NO1Name'>{{firstUsre[0].nick_name}}</view>
+
+        <view class='secondUser'>
+            <image class='secondUserImg' src='{{secondUsre[0].avatar_url || "/assets/usercenter/userImg.jpg"}}' />
+            <text class='NO2'>2</text>
+
+        </view>
+        <view class='NO2Name'>{{secondUsre[0].nick_name}}</view>
+
+        <view class='threeUser'>
+            <image class='threeUserImg' src='{{threeUsre[0].avatar_url || "/assets/usercenter/userImg.jpg"}}' />
+            <text class='NO3'>3</text>
+
+        </view>
+        <view class='NO3Name'>{{threeUsre[0].nick_name}}</view>
+    </view>
+
+    <view class='despiteBox' >
+        <image src='/assets/rank/despite.png' />
+        <view class='firstScore'>{{firstUsre[0].success_num}}分</view>
+        <view class='secondScore'>{{secondUsre[0].success_num}}分</view>
+        <view class='threeScore'>{{threeUsre[0].success_num}}分</view>
+    </view>
+
+    <view class='mydataBox'>
+        <view class="mydata-item scroll-view-item">
+            <image src='{{myImgUrl || "/assets/usercenter/userImg.jpg"}}' />
+            <text class='rankUserName'>{{myName}}</text>
+            <text class='rankUserScore'>{{myScore ||0}}分</text>
+        </view>
+    </view>
+
+    <view class='scroolBox'>
+        <scroll-view scroll-y style="height: 100%;">
+            <view class="scroll-view-item" wx:for="{{userList}}" wx:key='index'>
+                <text class='ranking'>{{index+4}}</text>
+                <image src='{{item.avatar_url || "/assets/usercenter/userImg.jpg"}}' />
+                <text class='rankUserName'>{{item.nick_name}}</text>
+                <text class='rankUserScore'>{{item.success_num}}分</text>
+            </view>
+        </scroll-view>
+    </view>
+
+</view>
+

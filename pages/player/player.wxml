@@ -1,0 +1,124 @@
+<view class="bg">
+
+    <view class='topWork'>
+        <view class='curtainTop'>
+            <image class='curtainTopImg' src='/assets/player/curtainTop.png' />
+            <view class='capsule'>
+                <image src='/assets/player/capsule.png' />
+                <text class='capsuleNum'>x {{gamechs}}</text>
+            </view>
+            <view class='subBox scoreAni1 scoreAni2' wx:if="{{ifShowSub}}">
+                -1
+            </view>
+        </view>
+
+        <view class='leftCurtain CurtainAni' animation="{{LeftCurtainAnimation}}">
+            <image src='/assets/player/curtainLeft.png' />
+        </view>
+
+        <view class='rightCurtain CurtainAni' animation="{{RightCurtainAnimation}}">
+            <image src='/assets/player/curtainRight.png' />
+        </view>
+
+        <view class='workArea'>
+            <!-- 底图 -->
+            <image class='titleImg' src='{{topicURL}}' bindload="imgUrlLoad" />
+            <!-- 遮照 -->
+            <view style='opacity:{{maskOpacity}}' wx:if="{{maskOpacity}}">
+                <image class='titlMask' bindtap='{{moveposition}}' src='{{botImgUrl}}' style='left:{{width}}px;top:{{height}}px' />
+            </view>
+            <view class='curtainText' animation="{{CurtainTextAnimation}}">第 {{currentTopic}} 题</view>
+        </view>
+
+    </view>
+
+    <view class='chairs'>
+        <image src='/assets/player/chairs.png' />
+        <view class='titleNum' animation="{{AnswerAnimation}}" wx:if="{{answershow}}">
+            <image src='/assets/player/titleNum.png' />
+            <text class='titleNumTxt'>猜《{{topicType}}》</text>
+            <text class='titlenow'>题目: {{currentTopic}} / {{counttopic}}</text>
+        </view>
+    </view>
+
+    <view class='answerArea' animation="{{AnswerAnimation}}" wx:if="{{answershow}}">
+
+        <view class='answerChoose' data-num="{{item.options}}" data-index='{{index}}' wx:for="{{answerList}}" wx:key="index" bindtap='{{chooseAnswer}}'>
+            <image class='answerimg' src='/assets/player/answer.png' />
+            <image class='lamp' src='/assets/player/lamp.png' />
+            <text class='ansTxt'>{{item.answer}}</text>
+            <image wx:if="{{item.showAok}}" class='okicon' src='/assets/player/ok.png' />
+            <image wx:if="{{item.showAerror}}" class='erroricon' src='/assets/player/error.png' />
+        </view>
+
+    </view>
+
+    <!-- 分享复活 倒计时 -->
+    <view class='mask' wx:if="{{showCountdownMask}}">
+
+        <view class='countbody' style='height:{{countbodyHeight}}rpx'>
+
+            <view class='countNumBox'>
+                <image src='/assets/player/failure.png' />
+            </view>
+            <view class='shareText'>{{shareTextstage}}</view>
+            <view class='shareGame' wx:if="{{showcountdownTOP}}">
+                <image class='breath' src='/assets/player/sharegame.png' />
+                <button id='shareGame' open-type='share'></button>
+            </view>
+
+            <view class='newGame' bindtap='receveGame'>
+                <image src='/assets/player/Tochallenge.png' />
+            </view>
+        </view>
+
+    </view>
+
+    <!-- gameOver -->
+    <view class='challengeMask' wx:if="{{showChallengeMask}}">
+        <view class='challengBody'>
+            <view class='toplogo'>
+                <image src='/assets/player/gameOver.png' />
+            </view>
+            <view class='challentext'>你的电池彻底用光啦～</view>
+            <view class='challenNewGame' bindtap='receveGame'>
+                <image src='/assets/player/newChallen.png' />
+            </view>
+        </view>
+    </view>
+
+    <!-- 分享得电池 -->
+    <view class='helpMask challengeMask' wx:if="{{showHelpMask}}">
+        <view class='helpBody challengBody'>
+            <view class='closeBtn' bindtap='closenochanceMask'>
+                <image src='/assets/index/close.png' />
+            </view>
+            <view class='batteryBox'>
+                <image src='/assets/player/battery.png' />
+            </view>
+
+            <view class='helpToptext helptext'>你的电池用光啦～</view>
+            <view class='helpBottext helptext'>求助好友获取电池吧～</view>
+
+            <image class='light' src='/assets/player/light.png' />
+            <view class='helpfriend'>
+                求助好友
+                <button id='helpShareBtn' open-type='share'></button>
+            </view>
+        </view>
+    </view>
+
+    <!-- 新手指引图 -->
+    <view class='newUserNav' wx:if="{{ifnewuser}}" bindtap='closeUserNav'>
+        <image class='chuoimg breath' src='/assets/player/chuo.png' />
+        <image class='arrowTopimg' src='/assets/player/arrowTop.png' />
+        <image class='txtTopimg' src='/assets/player/txtTop.png' />
+        <image class='txtBottomimg' src='/assets/player/txtBottom.png' />
+        <image class='arrowBottomimg' src='/assets/player/arrowBottom.png' />
+    </view>
+
+    <!-- gifBox -->
+    <view class='gifBox' wx:if="{{ifShowGif}}">
+        <image src='/assets/player/star.gif' />
+    </view>
+</view>

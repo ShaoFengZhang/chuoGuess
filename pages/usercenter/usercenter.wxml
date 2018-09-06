@@ -1,0 +1,59 @@
+<view class="bg">
+    <view class='curtainTop'>
+        <image src='/assets/player/curtainTop.png' />
+    </view>
+
+    <view class='bodyBg'>
+        <view class='toplog'>
+            <view class='challengesNumTxt'>
+                <view>挑战次数</view>
+                <view class='toplogNum'>{{user_avtime}}次</view>
+            </view>
+            <view class='userScoreTxt'>
+                <view>累计分数</view>
+                <view class='toplogNum'>{{success_num}}分</view>
+            </view>
+            <view class='RedNumTxt'>
+                <view>红包余额</view>
+                <view class='toplogNum'>{{available}}元</view>
+            </view>
+        </view>
+
+        <view class='btnBox'>
+            <view>
+                <image src='/assets/usercenter/shareBtn.png' bindtap='showOffRecord' />
+            </view>
+
+            <view>
+                <image src='/assets/usercenter/withdrawal.png' bindtap='gotoWithdraw'/>
+            </view>
+        </view>
+
+        <view class='awardBox'>
+            <image src='/assets/usercenter/award.png' />
+        </view>
+
+        <view class='scroolBox'>
+            <scroll-view scroll-y style="height: 100%;">
+                <view class="scroll-view-item" wx:for="{{redBaoList}}" wx:key="index">
+                    <view class='timeBox'>
+                        <text>{{item.updated_at}}</text>
+                        <!-- <text>00:15:00</text> -->
+                    </view>
+                    <view class='scrollTexBox'>
+                        <text wx:if="{{item.type==1}}">挑战红包</text>
+                        <text wx:if="{{item.type==2}}">翻倍红包</text>
+                        <text wx:if="{{item.type==3}}">账户提现</text>
+                        <text wx:if="{{item.type==5}}">新人红包</text>
+                        <text wx:if="{{(item.type==1) ||(item.type ==2) || (item.type ==5)}}">+¥{{item.account}}</text>
+                        <text wx:if="{{item.type==3}}">- ¥{{item.account}}</text>
+                    </view>
+                </view>
+                <view class='nodataTxt' wx:if="{{!redBaoList.length}}">暂无数据</view>
+            </scroll-view>
+        </view>
+
+    </view>
+</view>
+
+<canvas canvas-id="canvas" style="width:{{bgimgW}}px;height:{{bgimgH}}px;display:block;position:absolute; bottom:1500px" />

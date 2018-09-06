@@ -1,0 +1,76 @@
+.bg {
+    overflow: hidden;
+    background-color: #fff;
+}
+
+.topbg, .topbg image {
+    width: 100%;
+    height: 360rpx;
+}
+
+.bodybg {
+    width: 702rpx;
+    height: 864rpx;
+    background-color: #fff;
+    border-radius: 10rpx;
+    box-shadow: 0px 0px 6rpx 0px rgba(156, 156, 156, 0.4);
+    position: absolute;
+    top: 80rpx;
+    left: 24rpx;
+}
+
+.dollerBox, .dollerBox image {
+    width: 150rpx;
+    height: 150rpx;
+}
+
+.dollerBox {
+    margin: 40rpx auto 0;
+}
+
+.mydollerTxt {
+    width: 100%;
+    color: #161616;
+    font-size: 30rpx;
+    text-align: center;
+    margin: 60rpx 0 0 0;
+}
+
+.myBalance {
+    width: 100%;
+    color: #161616;
+    font-size: 80rpx;
+    font-family: PingFang-SC-Medium;
+    text-align: center;
+    margin: 20rpx 0 0 0;
+}
+
+.drawBtn, .drawBtn image {
+    width: 646rpx;
+    height: 84rpx;
+}
+
+.drawBtn{
+    margin: 100rpx auto 0;
+}
+
+.ruleTxt{
+    width: 100%;
+    margin-top: 50rpx;
+    box-sizing: border-box;
+    padding: 0 64rpx;
+    color:#161616;
+    font-size: 26rpx;
+}
+
+.ruleTxt view{
+    margin-bottom: 4rpx;
+}
+
+.canCarry{
+    display: inline-block;
+    color: #EA3E19;
+    font-size: 30rpx;
+}
+
+

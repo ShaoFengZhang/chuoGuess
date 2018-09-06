@@ -1,0 +1,66 @@
+<view class="bg">
+    <view class='curtainTop'>
+        <image class='curtain' src='/assets/player/bitTopCurtain.png' />
+        <image class='fireworks' src='/assets/player/fireworks.png' />
+        <image class='crown' src='/assets/player/crown.png' />
+        <view class='userTitle'>
+            <image src='{{userImg}}' />
+        </view>
+        <view class='userName'>{{userName}}</view>
+        <image class='succeedsText' src='/assets/player/succeedsText.png' />
+    </view>
+
+    <view class='clearanceRedBaoBox'  bindtap='{{receivehaploid}}'>
+        <image src='/assets/player/clearanceRedBao.png' />
+        <view class='receive'></view>
+        <view class='amount amounttop'>
+            <text class='renminbi'>￥</text>
+            <text class='amountNum'>{{haploidDoller}}</text>
+        </view>
+    </view>
+
+    <view class='clearanceRedBaoBox'>
+        <image src='/assets/player/doubbleBao.png' />
+        <view class='breath receive '>
+            <button  id='doubleShare' open-type='share'>
+                <image src='/assets/player/double.png' />
+            </button>
+
+        </view>
+        <view class='amount'>
+            <view class='doubleTxt'>翻倍红包，大吉大利</view>
+            <text class='renminbi'>￥</text>
+            <text class='amountNum'>{{doubleDoller}}</text>
+        </view>
+    </view>
+
+    <!-- 通关红包弹窗 -->
+    <view class='normalBox redBaoMaskBox' wx:if="{{showNormalBox}}">
+        <image class='normalRedBao' src='/assets/player/normalRedBao.png' />
+        <view class='customsTxt'>通关红包</view>
+        <view class='redBaoNumBox'>
+            <text class='redBaoNum'>{{haploidDoller}}</text>
+            <text class='yuan'>元</text>
+        </view>
+
+        <view class='btnBox'>
+            <image src='/assets/player/continueGame.png' bindtap='continueGame' />
+            <image src='/assets/player/checkRedBao.png' bindtap='checkRedBao' />
+        </view>
+    </view>
+
+    <!-- 翻倍红包弹窗 -->
+    <view class='doubleBox redBaoMaskBox' wx:if="{{showDoubleBox}}">
+        <image class='doubleRedBao' src='/assets/player/doubleRedBao.png' />
+        <view class='customsTxt' style='color:#F85634'>翻倍红包</view>
+        <view class='redBaoNumBox'>
+            <text class='redBaoNum' style='color:#F85634'>{{doubleDoller}}</text>
+            <text class='yuan' style='color:#F85634'>元</text>
+        </view>
+
+        <view class='btnBox'>
+            <image src='/assets/player/continueGame.png' bindtap="continueGame" />
+            <image src='/assets/player/checkRedBao.png' bindtap="checkRedBao" />
+        </view>
+    </view>
+</view>

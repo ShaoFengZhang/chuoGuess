@@ -1,0 +1,108 @@
+<view class="bg">
+
+    <view class='topbox'>
+        <image class='boxImg' src='/assets/index/topboxImg.png' />
+        <view class='userIcon'>
+            <open-data type="userAvatarUrl"></open-data>
+        </view>
+    </view>
+
+    <view class='startPlay'>
+        <form bindsubmit="startGame" report-submit class='scroleft'>
+            <button id='formID' formType="submit" class='breath'>
+                <image class='startBtn' src='/assets/index/startBtn.png' />
+            </button>
+        </form>
+
+        <button id='starbutton' open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="getUserInfo" wx:if="{{!hasUserInfo}}"></button>
+
+    </view>
+
+    <!-- 下方三个 -->
+    <view class='botNavBtnBox'>
+        <view class='rankList'>
+            <view class='rankList lightimg' bindtap='navegatiRank'>排行榜</view>
+            <button id='Rankbutton' data-tag='nonavi' open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="getUserInfo1" wx:if="{{!hasUserInfo}}"></button>
+        </view>
+        <view class='redBao'>
+            <view class='redBao lightimg' bindtap='navegatiRedBao'>我的红包</view>
+            <button id='Redbutton' data-tag='nonavi' open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="getUserInfo1" wx:if="{{!hasUserInfo}}"></button>
+        </view>
+        <view class='moreGame lightimg' bindtap='navegatiMoreGame'>更多好玩
+            <navigator class='moregame' target="miniProgram" open-type="navigate" app-id="{{navAppid}}" path="/pages/index/index" extra-data="" version="release">
+            </navigator>
+        </view>
+    </view>
+
+    <view class='bottomBtn'>
+        <view bindtap='gameRuleFun'>游戏规则</view>
+        <view bindtap='backgroundMusic'>背景音乐：{{musicTxt}}</view>
+        <view>
+            <button id='contactBtn' open-type="contact">联系客服</button>
+        </view>
+    </view>
+
+    <!-- 领取每日登录奖励 -->
+    <view class='chanceMask' wx:if="{{ifShowChanceMask}}">
+        <view class='chanceMaskBody'>
+            <view class='chanceTop'>
+                <image src='/assets/index/chanceTop.png' />
+            </view>
+            <view class='loginTxt'>每日登陆奖励</view>
+            <view class='addchanceTxt'>挑战机会+1</view>
+            <view class='recivebtn' bindtap='hiddenChanceMask'>
+                <image src='/assets/index/receiveBtn.png' />
+            </view>
+        </view>
+    </view>
+
+    <!-- 挑战机会不足弹窗 -->
+    <view class='chanceMask' wx:if="{{showNochanceMask}}">
+        <view class='chanceMaskBody'>
+            <view class='closeBtn' bindtap='closenochanceMask'>
+                <image src='/assets/index/close.png' />
+            </view>
+            <view class='chanceTop'>
+                <image src='/assets/index/shareTop.png' />
+            </view>
+            <view class='loginTxt' style='color:#EA3E19'>挑战机会不足</view>
+            <view class='addchanceTxt' style='color:#2A2A2A'>先去获得一些挑战机会吧！</view>
+            <view class='recivebtn' bindtap='hiddenChanceMask'>
+                <button id='shareBtn' open-type='share'>
+                    <image src='/assets/index/shareBtn.png' />
+                </button>
+
+            </view>
+        </view>
+    </view>
+
+    <!-- 新人红包 -->
+    <view class='chanceMask' wx:if="{{showdollermask}}">
+        <view class='chanceMaskBody'>
+            <view class='chanceTop dollerBox'>
+                <image src='/assets/index/doller.png' />
+            </view>
+            <view class='loginTxt'>恭喜你</view>
+            <view class='addchanceTxt dollerNumtop'>获得新手红包</view>
+            <view class='dollernum'>+ {{dollerNum}} 元</view>
+            <view class='recivebtn' bindtap='hiddendollereMask'>
+                <image src='/assets/index/receiveBtn.png' />
+            </view>
+        </view>
+    </view>
+
+    <!--规则弹窗  -->
+    <view class='ruleMask' wx:if="{{ifShowRuleMask}}">
+        <view class='ruleContent'>
+
+            <view class='closeimg' bindtap='switchRuleMask'>
+                <image src='/assets/index/closeBtn.png' />
+            </view>
+
+            <scroll-view scroll-y style="height:600rpx ">
+                <image class='ruleimg' src='{{ruleimg}}' mode='widthFix' />
+            </scroll-view>
+        </view>
+    </view>
+
+</view>

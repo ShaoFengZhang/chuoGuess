@@ -1,0 +1,26 @@
+<view class="bg">
+    <view class='topbg'>
+        <image src='/assets/withdraw/ellipse.png' />
+    </view>
+    <view class='bodybg'>
+        <view class='dollerBox'>
+            <image src='/assets/withdraw/doller.png' />
+        </view>
+
+        <view class='mydollerTxt'>我的余额</view>
+
+        <view class='myBalance'>¥{{mydoller}}</view>
+
+        <view class='drawBtn' bindtap='withdrawFun'>
+            <image src='/assets/withdraw/drawBtn.png' />
+        </view>
+
+        <view class='ruleTxt'>
+            <view class='ruleTxtTitle'>提现规则:</view>
+            <view class='ruleTxtOne'>1: 每人每天可提现次数为 <text class='canCarry'>{{daily_cash_count}}</text> 次</view>
+            <view class='ruleTxtTwo'>2: 每次提现金额为 <text class='canCarry'>{{withdrawal_amount}}</text> 元</view>
+            <view class='ruleTxtThree'>3: 提现金额将在1~5个工作日内打到您的零钱当中</view>
+        </view>
+
+    </view>
+</view>

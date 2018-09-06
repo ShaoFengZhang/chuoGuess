@@ -1,0 +1,578 @@
+.bg {
+    overflow: hidden;
+    background-color: #e54e49;
+}
+
+.CurtainAni, .CurtainAni image {
+    width: 268rpx;
+    height: 718rpx;
+    position: absolute;
+    top: 0rpx;
+    z-index: 3;
+}
+
+.leftCurtain {
+    left: 0;
+}
+
+.rightCurtain {
+    right: 0;
+}
+
+.curtainTop {
+    position: relative;
+    z-index: 4;
+    top: -40rpx;
+}
+
+.curtainTopImg {
+    width: 750rpx;
+    height: 120rpx;
+}
+
+.capsule {
+    position: absolute;
+    right: 10rpx;
+    bottom: -40rpx;
+    z-index: 10;
+}
+
+.capsule image {
+    width: 164rpx;
+    height: 74rpx;
+}
+
+.capsuleNum {
+    display: inline-block;
+    width: 78rpx;
+    height: 48rpx;
+    position: absolute;
+    top: 8rpx;
+    left: 66rpx;
+    text-align: center;
+    line-height: 48rpx;
+    font-size: 26rpx;
+    color: rgba(248, 169, 0, 1);
+}
+
+#sharebtn {
+    width: 52rpx;
+    height: 48rpx;
+    position: absolute;
+    top: 10rpx;
+    right: 0rpx;
+    opacity: 0;
+}
+
+.workArea {
+    width: 750rpx;
+    height: 645rpx;
+    background-color: rgb(53, 49, 51);
+    /* background-color: #e54e49; */
+    position: absolute;
+    top: 0rpx;
+    left: 0;
+    overflow: hidden;
+}
+
+.titleImg {
+    width: 750rpx;
+    height: 645rpx;
+}
+
+.titlMask {
+    width: 2250rpx;
+    height: 1968rpx;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.chairs {
+    width: 750rpx;
+    height: 242rpx;
+    position: relative;
+}
+
+.chairs image {
+    width: 750rpx;
+    height: 242rpx;
+}
+
+.titleNum {
+    width: 342rpx;
+    height: 122rpx;
+    position: absolute;
+    top: 28rpx;
+    left: 204rpx;
+    opacity: 0;
+    color: #5a0d14;
+}
+
+.titleNum image {
+    width: 342rpx;
+    height: 122rpx;
+}
+
+.titleNumTxt {
+    display: inline-block;
+    width: 302rpx;
+    height: 36rpx;
+    position: absolute;
+    top: 32rpx;
+    left: 40rpx;
+    text-align: center;
+    font-size: 30rpx;
+    line-height: 36rpx;
+    font-family: ReeJi-BigRuixain-BoldGBV10;
+    font-weight: 600;
+}
+
+.titlenow {
+    display: inline-block;
+    width: 302rpx;
+    height: 26rpx;
+    position: absolute;
+    bottom: 20rpx;
+    left: 40rpx;
+    text-align: center;
+    font-size: 22rpx;
+    line-height: 26rpx;
+    font-family: ReeJi-BigRuixain-BoldGBV10;
+    font-weight: 600;
+}
+
+.answerArea {
+    width: 750rpx;
+    margin-top: 20rpx;
+    box-sizing: border-box;
+    padding: 0 40rpx;
+    overflow: hidden;
+    opacity: 0;
+}
+
+.answerChoose {
+    position: relative;
+    margin-bottom: 40rpx;
+}
+
+.answerimg {
+    width: 324rpx;
+    height: 104rpx;
+}
+
+.ansTxt {
+    display: inline-block;
+    width: 238rpx;
+    height: 104rpx;
+    position: absolute;
+    top: 0;
+    left: 82rpx;
+    text-align: left;
+    line-height: 104rpx;
+    color: #5a0d14;
+    font-size: 36rpx;
+    box-sizing: border-box;
+    padding-left: 18rpx;
+}
+
+.answerArea view:nth-child(odd) {
+    float: left;
+}
+
+.answerArea view:nth-child(even) {
+    float: right;
+}
+
+.lamp {
+    width: 64rpx;
+    height: 64rpx;
+    position: absolute;
+    top: 20rpx;
+    left: 18rpx;
+}
+
+.okicon {
+    width: 86rpx;
+    height: 86rpx;
+    position: absolute;
+    bottom: 20rpx;
+    right: 0;
+}
+
+.erroricon {
+    width: 94rpx;
+    height: 80rpx;
+    position: absolute;
+    bottom: 20rpx;
+    right: 0;
+}
+
+/* 倒计时弹窗 */
+
+.mask {
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.countbody {
+    width: 600rpx;
+    height: 610rpx;
+    background-color: white;
+    border-radius: 10rpx;
+    /* margin: 18vh auto 0; */
+    position: absolute;
+    top: 18vh;
+    left: 76rpx;
+    overflow: hidden;
+}
+
+.countText {
+    width: 100%;
+    font-size: 40rpx;
+    color: #e6323e;
+    text-align: center;
+    margin-top: 38rpx;
+    font-family: SimHei;
+}
+
+.countNumBox {
+    width: 100%;
+    height: 152rpx;
+    margin: 0 auto;
+    position: relative;
+    background-color: #ea3e19;
+    overflow: hidden;
+}
+
+.countNumBox image {
+    display: block;
+    width: 330rpx;
+    height: 88rpx;
+    margin: 32rpx auto 0;
+}
+
+.shareText {
+    width: 100%;
+    text-align: center;
+    color: #2a2a2a;
+    font-size: 30rpx;
+    margin: 40rpx 0 0;
+}
+
+.countnum {
+    width: 220rpx;
+    height: 212rpx;
+    position: absolute;
+    top: 0;
+    left: 0;
+    line-height: 212rpx;
+    text-align: center;
+    color: #e6323e;
+    font-size: 100rpx;
+}
+
+.shareGame {
+    width: 386rpx;
+    height: 86rpx;
+    margin: 56rpx auto 0;
+    position: relative;
+}
+
+.shareGame image {
+    width: 386rpx;
+    height: 86rpx;
+}
+
+#shareGame {
+    width: 386rpx;
+    height: 78rpx;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+}
+
+.newGame {
+    width: 386rpx;
+    height: 78rpx;
+    margin: 40rpx auto 0;
+}
+
+.newGame image {
+    width: 386rpx;
+    height: 78rpx;
+}
+
+/* 游戏结束mask */
+
+.overText {
+    margin: 108rpx auto 0;
+    position: relative;
+}
+
+.overText image, .overText {
+    width: 220rpx;
+    height: 212rpx;
+}
+
+.overNewGame {
+    width: 386rpx;
+    height: 86rpx;
+    margin: 92rpx auto 0;
+}
+
+.overNewGame image {
+    width: 386rpx;
+    height: 86rpx;
+}
+
+.gameOverText {
+    position: absolute;
+    left: 70rpx;
+    font-size: 40rpx;
+    color: #e6323e;
+    text-align: center;
+}
+
+.overTxtTop {
+    top: 55rpx;
+}
+
+.overTxtBot {
+    top: 105rpx;
+}
+
+/* 挑战结束mask */
+
+.challengeMask {
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+}
+
+.challengBody {
+    width: 548rpx;
+    height: 408rpx;
+    background-color: white;
+    border-radius: 10rpx;
+    margin: 32vh auto 0;
+    overflow: hidden;
+    position: relative;
+}
+
+.toplogo {
+    width: 548rpx;
+    height: 152rpx;
+    background-color: #ea3e19;
+    position: relative;
+}
+
+.toplogo image {
+    width: 348rpx;
+    height: 170rpx;
+    margin: 0 auto;
+    position: absolute;
+    top: -50rpx;
+    left: 100rpx;
+}
+
+.challentext {
+    width: 100%;
+    text-align: center;
+    font-size: 30rpx;
+    color: #2a2a2a;
+    margin-top: 60rpx;
+}
+
+.challenNewGame {
+    width: 386rpx;
+    height: 86rpx;
+    margin: 50rpx auto 0;
+}
+
+.challenNewGame image {
+    width: 386rpx;
+    height: 86rpx;
+}
+
+/* 求助好友mask */
+
+.batteryBox {
+    margin: 50rpx auto 0;
+}
+
+.batteryBox, .batteryBox image {
+    width: 198rpx;
+    height: 88rpx;
+}
+
+.helpToptext {
+    margin-top: 46rpx;
+}
+
+.helptext {
+    text-align: center;
+    font-size: 30rpx;
+    color: #2a2a2a;
+    margin-bottom: 10rpx;
+}
+
+.light {
+    display: block;
+    width: 40rpx;
+    height: 42rpx;
+    margin: 0 auto;
+}
+
+.helpfriend {
+    width: 186rpx;
+    height: 48rpx;
+    margin: 0 auto;
+    color: #ea3e19;
+    font-size: 40rpx;
+    position: relative;
+    text-align: center;
+}
+
+#helpShareBtn {
+    width: 186rpx;
+    height: 48rpx;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+}
+
+/* 新的工作区域 */
+
+.topWork {
+    width: 750rpx;
+    height: 644rpx;
+    position: relative;
+    background-color: rgb(53, 49, 51);
+}
+
+.closeBtn {
+    position: absolute;
+    top: 20rpx;
+    right: 20rpx;
+}
+
+.closeBtn, .closeBtn image {
+    width: 54rpx;
+    height: 54rpx;
+}
+
+.gifBox {
+    width: 750rpx;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.gifBox image {
+    width: 750rpx;
+    height: 1204rpx;
+}
+
+.curtainText {
+    width: 100%;
+    color: white;
+    font-size: 80rpx;
+    text-align: center;
+    position: absolute;
+    left: 0;
+    top: 260rpx;
+    opacity: 0;
+}
+
+.subBox {
+    width: 162rpx;
+    height: 200rpx;
+    position: absolute;
+    right: 10rpx;
+    top: 250rpx;
+    color: rgb(251, 198, 0);
+    font-size: 50rpx;
+    text-align: center;
+    z-index: 12;
+}
+
+.subBox image {
+    width: 162rpx;
+    height: 200rpx;
+}
+
+.scoreAni1 {
+    animation: scoreAni1 0.6s ease 1;
+}
+
+@keyframes scoreAni1 {
+    0% {
+        top: 250rpx;
+        transform: scale(1);
+    }
+
+    100% {
+        top: 150rpx;
+        transform: scale(1.5);
+    }
+}
+
+.newUserNav {
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.newUserNav image{
+    position: absolute;
+}
+
+.chuoimg {
+    width: 147rpx;
+    height: 126rpx;
+    top: 18vh;
+    left: 302rpx;
+}
+
+.arrowTopimg {
+    width: 74rpx;
+    height: 94rpx;
+    top: 29vh;
+    left: 422rpx;
+}
+
+.txtTopimg {
+    width: 313rpx;
+    height: 61rpx;
+    top: 40vh;
+    left: 340rpx;
+}
+
+.txtBottomimg {
+    width: 308rpx;
+    height: 56rpx;
+    top: 60vh;
+    left: 40rpx;
+}
+
+.arrowBottomimg {
+    width: 55rpx;
+    height: 104rpx;
+    top: 70vh;
+    left: 160rpx;
+}

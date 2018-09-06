@@ -1,0 +1,127 @@
+.bg {
+    overflow: hidden;
+    background-color: #ffe0e0;
+}
+
+.curtainTop, .curtainTop image {
+    width: 750rpx;
+    height: 10vh;
+}
+
+.bodyBg {
+    width: 696rpx;
+    height: 948rpx;
+    margin: 4vh auto 0;
+    box-sizing: border-box;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-origin: border-box;
+    background-image: url("https://tp.datikeji.com/chuoGuess/15348350875724/wis7kWaLwaIjaCNjbEatUEXDY0sEhMqImXFFS7lO.png");
+    position: relative;
+    overflow: hidden;
+}
+
+.toplog {
+    width: 100%;
+    font-size: 24rpx;
+    font-family: PingFang-SC-Medium;
+    color: rgba(58, 58, 58, 1);
+    margin-top: 106rpx;
+    display: flex;
+    justify-content: space-around;
+    box-sizing: border-box;
+    padding-right: 20rpx;
+}
+
+.challengesNumTxt, .userScoreTxt, .RedNumTxt {
+    width: 180rpx;
+}
+
+.toplog view {
+    text-align: center;
+}
+
+.toplogNum {
+    height: 34rpx;
+    font-size: 30rpx;
+    margin-top: 26rpx;
+    overflow: hidden;
+}
+
+.btnBox {
+    width: 100%;
+    height: 84rpx;
+    margin-top: 54rpx;
+    display: flex;
+    justify-content: space-around;
+}
+
+.btnBox image {
+    width: 250rpx;
+    height: 84rpx;
+}
+
+.awardBox image, .awardBox {
+    width: 328rpx;
+    height: 64rpx;
+}
+
+.awardBox {
+    margin: 132rpx auto 0;
+}
+
+.scroolBox {
+    width: 100%;
+    height: 340rpx;
+    margin-top: 10rpx;
+    box-sizing: border-box;
+    padding-right: 20rpx;
+    padding-left: 40rpx;
+}
+
+.scroll-view-item {
+    width: 100%;
+    height: 100rpx;
+    border-bottom: 2rpx solid #d9d9d9;
+    box-sizing: border-box;
+}
+
+.scroll-view-item:last-child {
+    border: none;
+}
+
+.timeBox {
+    width: 100%;
+    font-size: 20rpx;
+    font-family: PingFang-SC-Medium;
+    color: rgba(125, 125, 125, 1);
+    margin-top: 10rpx;
+}
+
+.timeBox text {
+    margin-right: 10rpx;
+}
+
+.scrollTexBox {
+    font-size: 24rpx;
+    font-family: PingFang-SC-Medium;
+    color: #161616;
+    margin-top: 26rpx;
+    box-sizing: border-box;
+    padding-right: 10rpx;
+}
+
+.scrollTexBox text:last-child {
+    float: right;
+    font-size: 30rpx;
+    color: #ea3e19;
+}
+
+.nodataTxt{
+    width:100%;
+    height: 100%;
+    text-align: center;
+    line-height: 360rpx;
+    color: gray;
+}
+
