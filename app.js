@@ -11,6 +11,6 @@ App({
 
     globalData: {
         userInfo: null,
-        appid: "wxc89f64e2e55e28c6",
+        appid: "",
     }
 })
