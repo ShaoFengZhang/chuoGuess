@@ -9,12 +9,14 @@ Page({
         ifShowChanceMask: false,
         showNochanceMask: false,
         musicTxt:'开',
+        musicStatus:true,
         ifShowRuleMask:false,
     },
 
     onLoad: function() {
         this.creatEBgMusicAudioFun();
         Loginfunc.wxloginfnc(app, this);
+        this.configshowload=true;
         wx.showLoading({
             title: 'loading',
             mask: true,
@@ -51,23 +53,12 @@ Page({
                 }
             })
         }
+       
     },
 
     onShow: function() {
         let _this=this;
         this.getConfigFun();
-        wx.getBackgroundAudioPlayerState({
-            success: function (res) {
-                let status = res.status;
-                console.log(status)
-                _this.setData({
-                    musicTxt: status==1? '开':'关',
-                })
-            },
-            fail:function(res){
-                console.log(res)
-            }
-        })
     },
 
     onHide: function() {
@@ -98,8 +89,20 @@ Page({
                 userInfo: e.detail.userInfo,
                 hasUserInfo: true
             });
-            console.log("NNNNNNNNN")
             Loginfunc.checkUserInfo(app, e.detail);
+            this.navegatiRank();
+        }
+    },
+
+    getUserInfo2: function (e) {
+        if (e.detail && e.detail.userInfo) {
+            app.globalData.userInfo = e.detail.userInfo
+            this.setData({
+                userInfo: e.detail.userInfo,
+                hasUserInfo: true
+            });
+            Loginfunc.checkUserInfo(app, e.detail);
+            this.navegatiRedBao();
         }
     },
 
@@ -211,13 +214,13 @@ Page({
                                 }, function(data) {
                                     console.log('groupCheckUrl', data);
                                     if (data.code == 200) {
-                                        wx.showToast({
-                                            title: '挑战机会+1',
-                                            icon: 'success',
-                                        });
                                         _this.setData({
                                             showNochanceMask: false,
-                                        })
+                                        });
+                                        wx.showToast({
+                                            title: '挑战机会 +1',
+                                            icon: 'success',
+                                        });
                                     } else if (data.code == 223) {
                                         wx.showToast({
                                             title: '此群已分享',
@@ -243,7 +246,6 @@ Page({
 
             },
             fail: function(data) {
-                console.log("fail", data);
                 wx.showToast({
                     title: '分享失败',
                     icon: 'none',
@@ -277,7 +279,11 @@ Page({
                 navAppid: data.data.appid,
                 ruleimg: app.globalData.ruleUrl,
             });
-            wx.hideLoading();
+            if (_this.configshowload){
+                wx.hideLoading();
+                _this.configshowload=false;
+            }
+            
         });
     },
 
@@ -305,30 +311,22 @@ Page({
     },
 
     backgroundMusic:function(){
-        let _this=this;
-        wx.getBackgroundAudioPlayerState({
-            success: function (res) {
-                let status = res.status;
-                console.log(status)
-                if (status==1){
-                    _this.setData({
-                        musicTxt: '关',
-                    });
-                    wx.pauseBackgroundAudio();
-                }else{
-                    _this.setData({
-                        musicTxt: '开'
-                    });
-                    _this.creatEBgMusicAudioFun();
-                }
-                
-            },
-            fail: function (res) {
-                console.log(res)
-            }
-        })        
+        if (this.data.musicStatus){
+            this.setData({
+                musicTxt: '关',
+                musicStatus:false,
+            });
+            wx.pauseBackgroundAudio();
+        } else{
+            this.setData({
+                musicTxt: '开',
+                musicStatus: true,
+            });
+            this.creatEBgMusicAudioFun();
+        }      
     },
 
+    // 创建背景音乐
     creatEBgMusicAudioFun: function () {
         // this.bgMusicAudio = wx.createInnerAudioContext();
         // this.bgMusicAudio.autoplay = false;
@@ -340,7 +338,7 @@ Page({
         wx.playBackgroundAudio({
             dataUrl: 'https://tp.datikeji.com/ccaa/backgroundMusic.mp3',
             title: '背景音乐',
-        })
+        });
     },
 
     gameRuleFun:function(){

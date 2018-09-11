@@ -9,9 +9,9 @@ Page({
         showcountdownTOP: true,
         ifnewuser: false,
         maskOpacity: 1,
-        ifShowSub:0,
-        countbodyHeight: 610, 
-        shareTextstage:'分享到群即可复活',
+        ifShowSub: 0,
+        countbodyHeight: 610,
+        shareTextstage: '分享到群即可复活',
     },
 
     onLoad: function(options) {
@@ -35,7 +35,7 @@ Page({
             counttopic: app.globalData.questionNum,
         });
         console.log('app.globalData.ifshownewuser', app.globalData.ifshownewuser)
-        if (!app.globalData.ifshownewuser){
+        if (!app.globalData.ifshownewuser) {
             this.setData({
                 ifnewuser: app.isnew == 1 ? true : false,
             });
@@ -49,8 +49,7 @@ Page({
         _this.getTheTopicDry();
     },
 
-    onShow: function() {
-    },
+    onShow: function() {},
 
     onHide: function() {
         console.log("HIDE");
@@ -129,10 +128,11 @@ Page({
                                         };
                                         if (shareType == 5) {
                                             app.gamechs = parseInt(data.gamechs);
-                                            _this.setData({
-                                                showHelpMask: false,
-                                                gamechs: app.gamechs
-                                            });
+                                            _this.shareTime++
+                                                _this.setData({
+                                                    showHelpMask: false,
+                                                    gamechs: app.gamechs
+                                                });
                                             wx.showToast({
                                                 title: `电池+${data.gamechs}`,
                                                 icon: 'success',
@@ -159,10 +159,19 @@ Page({
                             }
                         })
                     } else {
-                        wx.showToast({
-                            title: '复活失败,请分享到群',
-                            icon: 'none',
-                        });
+                        if (shareType == 4) {
+                            wx.showToast({
+                                title: '复活失败,请分享到群',
+                                icon: 'none',
+                            });
+                        };
+                        if (shareType == 5) {
+                            wx.showToast({
+                                title: '分享好友失败,请分享到群',
+                                icon: 'none',
+                            }); 
+                        }
+
                         if (res.target && res.target.id == "shareGame") {
                             _this.setData({
                                 showCountdownMask: true,
@@ -195,8 +204,9 @@ Page({
 
     moveposition: function(e) {
         if (app.gamechs <= 0) {
-            this.shareTime++;
-            if (this.shareTime > this.CountShareTime) {
+            // this.shareTime++;
+            console.log('????????????????', this.shareTime)
+            if (this.shareTime >= this.CountShareTime) {
                 this.setData({
                     showChallengeMask: true
                 })
@@ -221,11 +231,11 @@ Page({
                 width: (-rect.width / 2) + x,
                 height: (-rect.height / 2) + y,
             })
-            _this.gifTime=setTimeout(function(){
+            _this.gifTime = setTimeout(function() {
                 _this.setData({
                     ifShowSub: 0,
                 })
-            },600)
+            }, 600)
         }).exec()
     },
 
@@ -296,7 +306,7 @@ Page({
                     _this.setData({
                         showCountdownMask: true,
                         showcountdownTOP: false,
-                        countbodyHeight:400,
+                        countbodyHeight: 400,
                         shareTextstage: '重新开始吧~',
                     });
                 }
@@ -307,7 +317,7 @@ Page({
 
     getTheTopicDry: function() {
         let _this = this;
-        let getTheTopicDryUrl = Loginfunc.domin + `api/getproblems2`;
+        let getTheTopicDryUrl = Loginfunc.domin + `api/getproblems3`;
         this.setData({
             // answerList: [],
             botImgUrl: `/assets/player/mask${app.globalData.hard[this.currentTopic]}.png`,
@@ -319,7 +329,8 @@ Page({
         this.currentTopic++;
         Loginfunc.requestURl(app, getTheTopicDryUrl, "POST", {
             img_id: _this.titleArr,
-            num: _this.currentTopic
+            num: _this.currentTopic,
+            user_id: app.user_id,
         }, function(data) {
             console.log('getTheTopicDryUrl', data);
             if (_this.currentTopic == 1) {
@@ -328,19 +339,6 @@ Page({
                     RightCurtainAnimation: _this.RightCurtainAnimation,
                 });
             }
-            if (data.code && data.code == 225) {
-                wx.showModal({
-                    title: '提示',
-                    content: '没有获取到题目,请返回重试',
-                    showCancel: false,
-                    success: function(res) {
-                        _this.endGame();
-                        wx.navigateBack({
-                            delta: 1
-                        })
-                    }
-                })
-            };
             if (data.code && data.code == 200) {
                 _this.topicNum = data.data.imgid; //题目编号
                 _this.titleArr.push(data.data.imgid); //去重编号
@@ -356,8 +354,8 @@ Page({
                     answerList.push(objanswer);
                 }
 
-                if (_this.currentTopic == 1){
-                    _this.setDataListTime = setTimeout(function () {
+                if (_this.currentTopic == 1) {
+                    _this.setDataListTime = setTimeout(function() {
                         _this.setData({
                             maskOpacity: 1,
                             currentTopic: _this.currentTopic,
@@ -368,13 +366,13 @@ Page({
                         })
                     }, 0)
 
-                    _this.setTopicLoadTime = setTimeout(function () {
+                    _this.setTopicLoadTime = setTimeout(function() {
                         _this.setData({
                             topicURL: Loginfunc.QiNiuURl + data.data.link,
                         })
-                    }, 80)
-                }else{
-                    _this.setDataListTime = setTimeout(function () {
+                    }, 120)
+                } else {
+                    _this.setDataListTime = setTimeout(function() {
                         _this.setData({
                             maskOpacity: 1,
                             currentTopic: _this.currentTopic,
@@ -385,24 +383,50 @@ Page({
                         })
                     }, 1800)
 
-                    _this.setTopicLoadTime = setTimeout(function () {
+                    _this.setTopicLoadTime = setTimeout(function() {
                         _this.setData({
                             topicURL: Loginfunc.QiNiuURl + data.data.link,
                         })
                     }, 1880)
                 }
 
-                
 
+
+            } else {
+                wx.showModal({
+                    title: '提示',
+                    content: `${data.msg}`,
+                    showCancel: false,
+                    success: function(res) {
+                        _this.endGame();
+                        wx.navigateBack({
+                            delta: 1
+                        })
+                    }
+                })
             }
         });
     },
 
     receveGame: function() {
         let _this = this;
+        // this.endGame();
+        // wx.navigateBack({
+        //     delta: 1
+        // })
+        this.setData({
+            showChallengeMask: false
+        })
+    },
+
+    receveGame2: function() {
+        let _this = this;
         this.endGame();
         wx.navigateBack({
             delta: 1
+        })
+        this.setData({
+            showChallengeMask: false
         })
     },
 
@@ -520,9 +544,9 @@ Page({
         this.setData({
             showHelpMask: false,
         });
-        wx.navigateBack({
-            data: 1
-        })
+        // wx.navigateBack({
+        //     data: 1
+        // })
     },
 
     imgUrlLoad: function(e) {
@@ -541,10 +565,10 @@ Page({
 
     },
 
-    closeUserNav:function(){
-        app.globalData.ifshownewuser=1;
+    closeUserNav: function() {
+        app.globalData.ifshownewuser = 1;
         this.setData({
-            ifnewuser:false,
+            ifnewuser: false,
         })
     },
 })

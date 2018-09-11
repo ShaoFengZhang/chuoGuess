@@ -1,0 +1,71 @@
+{
+	"description": "项目配置文件。",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true,
+		"nodeModules": false
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.2.4",
+	"appid": "wxc89f64e2e55e28c6",
+	"projectname": "chuoGuess",
+	"isGameTourist": false,
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": 4,
+			"list": [
+				{
+					"id": -1,
+					"name": "01",
+					"pathName": "pages/player/player",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "02",
+					"pathName": "pages/redBao/redBao",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "03",
+					"pathName": "pages/userRank/userRank",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "04",
+					"pathName": "pages/usercenter/usercenter",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "05",
+					"pathName": "pages/withdraw/withdraw"
+				}
+			]
+		}
+	}
+}

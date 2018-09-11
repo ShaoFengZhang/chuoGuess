@@ -1,18 +1,20 @@
 {
-  "pages":[
-    "pages/index/index",
-    "pages/player/player",
-    "pages/usercenter/usercenter",
-    "pages/withdraw/withdraw",
-    "pages/userRank/userRank",
-    "pages/redBao/redBao"
-  ],
-  "window":{
-    "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#000",
-    "navigationBarTitleText": "戳戳猜猜",
-    "navigationBarTextStyle":"white"
-  },
-
-  "debug":true
+    "pages": [
+        "pages/index/index",
+        "pages/player/player",
+        "pages/usercenter/usercenter",
+        "pages/withdraw/withdraw",
+        "pages/userRank/userRank",
+        "pages/redBao/redBao"
+    ],
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#000",
+        "navigationBarTitleText": "戳戳猜猜",
+        "navigationBarTextStyle": "white"
+    },
+    "networkTimeout": {
+        "request":10000
+    },
+    "debug": true
 }

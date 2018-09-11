@@ -28,7 +28,7 @@ Page({
         let random = Math.floor(Math.random() * app.shareList.length);
         return {
             title: `${app.shareList[random].title}`,
-            path: `pages/index/index?uid=${app.globalData.user_id}`,
+            path: `pages/index/index?uid=${app.user_id}`,
             imageUrl: `${Loginfunc.QiNiuURl}${app.shareList[random].pic}`,
         };
     },

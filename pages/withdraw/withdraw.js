@@ -33,15 +33,20 @@ Page({
         let random = Math.floor(Math.random() * app.shareList.length);
         return {
             title: `${app.shareList[random].title}`,
-            path: `pages/index/index?uid=${app.globalData.user_id}`,
+            path: `pages/index/index?uid=${app.user_id}`,
             imageUrl: `${Loginfunc.QiNiuURl}${app.shareList[random].pic}`,
         };
     },
 
     withdrawFun: function() {
+        wx.showLoading({
+            title: 'loading',
+            mask: true,
+        });
         console.log(Math.floor(app.globalData.available));
         console.log(parseFloat(app.globalData.withdrawal_amount));
         if (parseFloat(app.globalData.available) < parseFloat(app.globalData.withdrawal_amount)) {
+            wx.hideLoading();
             wx.showModal({
                 title: '提现失败',
                 content: `账户余额小于${app.globalData.withdrawal_amount}元`,
@@ -58,6 +63,7 @@ Page({
                 user_id: app.user_id,
             }, function(data) {
                 console.log('withDrawUrl', data);
+                wx.hideLoading();
                 if (data.code == 200) {
                     wx.showModal({
                         title: '提现成功',
@@ -83,7 +89,5 @@ Page({
             })
 
         }
-
-
     }
 })

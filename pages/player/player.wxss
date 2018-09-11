@@ -407,12 +407,12 @@
 /* 求助好友mask */
 
 .batteryBox {
-    margin: 50rpx auto 0;
+    margin: 46rpx auto 0;
 }
 
 .batteryBox, .batteryBox image {
-    width: 198rpx;
-    height: 88rpx;
+    width: 140rpx;
+    height: 74rpx;
 }
 
 .helpToptext {
@@ -444,8 +444,8 @@
 }
 
 #helpShareBtn {
-    width: 186rpx;
-    height: 48rpx;
+    width: 194rpx;
+    height: 70rpx;
     position: absolute;
     top: 0;
     left: 0;
@@ -538,7 +538,7 @@
     background-color: rgba(0, 0, 0, 0.5);
 }
 
-.newUserNav image{
+.newUserNav image {
     position: absolute;
 }
 
@@ -575,4 +575,69 @@
     height: 104rpx;
     top: 70vh;
     left: 160rpx;
+}
+
+/* 修改 */
+
+.helpBody {
+    /* width: 420rpx;
+    height: 280rpx; */
+    box-sizing: border-box;
+    background-size: 100% 100%;
+    padding: 0;
+    background-repeat: no-repeat;
+    background-origin: border-box;
+    background-image: url('https://tp.datikeji.com/chuoGuess/15365743297412/Uc6a6kEEMFaQRMLqdmiVXswJNEKERDygVFEq01QP.png');
+}
+
+.helpBottext {
+    color: #000;
+    font-size: 34rpx;
+    margin-top: 30rpx;
+}
+
+.batterryNoTxt {
+    color: #5a0d14;
+    font-size: 24rpx;
+    text-align: center;
+    margin-top: 10rpx;
+}
+
+.backTopic,.backTopic image {
+    width:194rpx;
+    height: 70rpx;
+    /* margin-right: 40rpx; */
+}
+
+.helpMaskBtnBox {
+    width: 100%;
+    margin-top: 60rpx;
+    display: flex;
+    justify-content: center;
+}
+
+.helpfriendNew,.helpfriendNew image {
+    position: relative;
+    width: 194rpx;
+    height: 70rpx;
+}
+
+.determine{
+    margin-right: 0;
+    width: 300rpx;
+    text-align: center;
+    margin-top:-18rpx; 
+}
+
+.helpBottext2{
+    margin-top: 40rpx;
+}
+
+.challenFriendTxt{
+    font-size: 24rpx;
+    margin-top: 10rpx;
+}
+
+.helpMaskBtnBox .backTopic{
+    margin-right: 40rpx;
 }

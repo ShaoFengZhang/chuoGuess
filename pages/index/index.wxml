@@ -26,7 +26,7 @@
         </view>
         <view class='redBao'>
             <view class='redBao lightimg' bindtap='navegatiRedBao'>我的红包</view>
-            <button id='Redbutton' data-tag='nonavi' open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="getUserInfo1" wx:if="{{!hasUserInfo}}"></button>
+            <button id='Redbutton' data-tag='nonavi' open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="getUserInfo2" wx:if="{{!hasUserInfo}}"></button>
         </view>
         <view class='moreGame lightimg' bindtap='navegatiMoreGame'>更多好玩
             <navigator class='moregame' target="miniProgram" open-type="navigate" app-id="{{navAppid}}" path="/pages/index/index" extra-data="" version="release">
@@ -67,7 +67,7 @@
             </view>
             <view class='loginTxt' style='color:#EA3E19'>挑战机会不足</view>
             <view class='addchanceTxt' style='color:#2A2A2A'>先去获得一些挑战机会吧！</view>
-            <view class='recivebtn' bindtap='hiddenChanceMask'>
+            <view class='recivebtn'>
                 <button id='shareBtn' open-type='share'>
                     <image src='/assets/index/shareBtn.png' />
                 </button>

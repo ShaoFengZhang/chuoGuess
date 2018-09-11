@@ -67,7 +67,7 @@
                 <button id='shareGame' open-type='share'></button>
             </view>
 
-            <view class='newGame' bindtap='receveGame'>
+            <view class='newGame' bindtap='receveGame2'>
                 <image src='/assets/player/Tochallenge.png' />
             </view>
         </view>
@@ -76,35 +76,41 @@
 
     <!-- gameOver -->
     <view class='challengeMask' wx:if="{{showChallengeMask}}">
-        <view class='challengBody'>
-            <view class='toplogo'>
-                <image src='/assets/player/gameOver.png' />
+        <view class='helpBody challengBody'>
+            <view class='batteryBox'>
+                <image src='/assets/player/battery.gif' />
             </view>
-            <view class='challentext'>你的电池彻底用光啦～</view>
-            <view class='challenNewGame' bindtap='receveGame'>
-                <image src='/assets/player/newChallen.png' />
+            <view class='helpBottext helptext challenFriendTxt'>好友求助机会已用光</view>
+            <view class='helpBottext helptext helpBottext2'>返回继续答题</view>
+
+            <view class='helpMaskBtnBox'>
+                <view class=' backTopic determine' bindtap='receveGame'>
+                    <image src='/assets/player/backtopic.png' />
+                </view>
             </view>
+
         </view>
     </view>
 
     <!-- 分享得电池 -->
     <view class='helpMask challengeMask' wx:if="{{showHelpMask}}">
         <view class='helpBody challengBody'>
-            <view class='closeBtn' bindtap='closenochanceMask'>
-                <image src='/assets/index/close.png' />
-            </view>
             <view class='batteryBox'>
-                <image src='/assets/player/battery.png' />
+                <image src='/assets/player/nobattery.gif' />
+            </view>
+            <view class='batterryNoTxt'>电池耗尽</view>
+            <view class='helpBottext helptext'>求助好友获取额外能量吧</view>
+
+            <view class='helpMaskBtnBox'>
+                <view class='backTopic' bindtap='closenochanceMask'>
+                    <image src='/assets/player/determin.png' />
+                </view>
+                <view class='helpfriendNew'>
+                    <image src='/assets/player/shareFriend.png' />
+                    <button id='helpShareBtn' open-type='share'></button>
+                </view>
             </view>
 
-            <view class='helpToptext helptext'>你的电池用光啦～</view>
-            <view class='helpBottext helptext'>求助好友获取电池吧～</view>
-
-            <image class='light' src='/assets/player/light.png' />
-            <view class='helpfriend'>
-                求助好友
-                <button id='helpShareBtn' open-type='share'></button>
-            </view>
         </view>
     </view>
 

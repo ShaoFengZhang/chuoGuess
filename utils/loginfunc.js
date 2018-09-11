@@ -1,7 +1,7 @@
 const domin = "https://xcx12.datikeji.com/";
 const LoginURl = `${domin}api/login`;
 const checkUserUrl = `${domin}api/getuserinfo`;
-const QiNiuURl =`https://tp.datikeji.com/`;
+const QiNiuURl = `https://tp.datikeji.com/`;
 import md5 from './md5.js';
 
 const md5pition = (data) => {
@@ -49,7 +49,7 @@ const wxloginfnc = (app) => {
     })
 };
 
-const wxloginfnc2 = (app,_this) => {
+const wxloginfnc2 = (app, _this) => {
     wx.login({
         success: res => {
             wx.request({
@@ -62,13 +62,13 @@ const wxloginfnc2 = (app,_this) => {
                     console.log('LoginURl', value);
                     app.user_id = value.data.user_id;
                     app.isnew = value.data.isnew;
-                    if (value.data.isnew==1){
+                    if (value.data.isnew == 1) {
                         _this.setData({
-                            showdollermask: true ,
+                            showdollermask: true,
                             dollerNum: value.data.money
                         })
                     }
-                    getDailyChannel(app,_this);
+                    getDailyChannel(app, _this);
                     getSettingfnc(app);
                 }
             });
@@ -76,11 +76,11 @@ const wxloginfnc2 = (app,_this) => {
     })
 };
 
-const getDailyChannel= function(app,_this) {
+const getDailyChannel = function(app, _this) {
     let getDailyChannel = domin + `api/getDailyChannel`;
     requestURl2(app, getDailyChannel, "POST", {
         user_id: app.user_id,
-    }, function (data) {
+    }, function(data) {
         app.getLoadReward = data.getLoadReward; //1 已经获得奖励 没有获得奖励
         console.log('getDailyChannel', app.getLoadReward);
         _this.setData({
@@ -121,7 +121,7 @@ const checkUserInfo = (app, res) => {
             // encryptedData: res.encryptedData,
             // iv: res.iv,
             userinfo: res.rawData,
-            user_id:app.user_id
+            user_id: app.user_id
         }, function(data) {
             console.log('checkUser', data);
         });
@@ -170,12 +170,30 @@ const requestURl2 = (app, url, method, data, cb) => {
             // console.log(url, resdata);
             cb(resdata.data);
         },
-        fali: function() {
-            wx.showToast({
-                title: "网络异常",
-                icon: 'loading',
-                duration: 2000
+        fali: function(res) {
+            wx.showModal({
+                title: '提示',
+                content: '网络异常,请稍后再试',
+                showCancel: false,
+                success: function (res) { }
             })
+        },
+        complete: function(res) {
+           
+            if (!res.statusCode) {
+                wx.hideLoading();
+                wx.showModal({
+                    title: '提示',
+                    content: '网络异常,请稍后再试',
+                    showCancel: false,
+                    success: function (res) {
+                        wx.reLaunch({
+                            url: '/pages/index/index'
+                        })
+                    }
+                })
+            }
+
         }
     })
 };

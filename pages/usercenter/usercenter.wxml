@@ -20,9 +20,9 @@
         </view>
 
         <view class='btnBox'>
-            <view>
+            <!-- <view>
                 <image src='/assets/usercenter/shareBtn.png' bindtap='showOffRecord' />
-            </view>
+            </view> -->
 
             <view>
                 <image src='/assets/usercenter/withdrawal.png' bindtap='gotoWithdraw'/>

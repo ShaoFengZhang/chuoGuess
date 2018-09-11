@@ -20,11 +20,13 @@ Page({
             this.setData({
                 userImg: app.globalData.userInfo.avatarUrl,
                 userName: app.globalData.userInfo.nickName.slice(0, 11) || '未授权用户',
+                isExamine: app.globalData.isExamine
             })
         } else {
             this.setData({
                 userImg: '/assets/player/crown.png',
                 userName: '未授权用户',
+                isExamine: app.globalData.isExamine
             })
         }
         this.creatVictoryAudioFun();
@@ -49,6 +51,11 @@ Page({
     onShareAppMessage: function(res) {
         let _this = this;
         console.log(res);
+        if (res.from === 'button') {
+            wx.reportAnalytics('botenvelopeclick', {
+                uid: app.user_id,
+            });
+        }
         let groupCheckUrl = Loginfunc.domin + `api/issharedraw`;
         let random = Math.floor(Math.random() * app.shareList.length);
         return {
@@ -162,6 +169,9 @@ Page({
         wx.showLoading({
             title: 'loading',
             mask: true,
+        });
+        wx.reportAnalytics('danredclick', {
+            uid: app.user_id,
         });
         this.receiveDoller(1)
     },

@@ -19,7 +19,7 @@
         </view>
     </view>
 
-    <view class='clearanceRedBaoBox'>
+    <view class='clearanceRedBaoBox'  wx:if="{{isExamine==1?false:true}}">
         <image src='/assets/player/doubbleBao.png' />
         <view class='breath receive '>
             <button  id='doubleShare' open-type='share'>
