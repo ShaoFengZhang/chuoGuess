@@ -108,6 +108,10 @@ Page({
                     })
                 }
 
+                if (app.globalData.musicStatus) {
+                    app.globalData.music.play();
+                }
+
 
             },
             fail: function(data) {
@@ -115,7 +119,13 @@ Page({
                 wx.showToast({
                     title: '分享失败',
                     icon: 'none',
-                })
+                });
+                if (app.globalData.musicStatus) {
+                    setTimeout(function () {
+                        app.globalData.music.play();
+
+                    }, 200)
+                }
             }
         };
     },

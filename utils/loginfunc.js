@@ -62,6 +62,7 @@ const wxloginfnc2 = (app, _this) => {
                     console.log('LoginURl', value);
                     app.user_id = value.data.user_id;
                     app.isnew = value.data.isnew;
+                    app.success = value.data.issuccess;
                     if (value.data.isnew == 1) {
                         _this.setData({
                             showdollermask: true,
@@ -167,6 +168,7 @@ const requestURl2 = (app, url, method, data, cb) => {
         data: data,
         method: method,
         success: function(resdata) {
+            app.netBlock = 0;
             // console.log(url, resdata);
             cb(resdata.data);
         },
@@ -175,23 +177,29 @@ const requestURl2 = (app, url, method, data, cb) => {
                 title: '提示',
                 content: '网络异常,请稍后再试',
                 showCancel: false,
-                success: function (res) { }
+                success: function (res) {}
             })
         },
         complete: function(res) {
-           
             if (!res.statusCode) {
+                app.netBlock++;
                 wx.hideLoading();
-                wx.showModal({
-                    title: '提示',
-                    content: '网络异常,请稍后再试',
-                    showCancel: false,
-                    success: function (res) {
-                        wx.reLaunch({
-                            url: '/pages/index/index'
-                        })
-                    }
-                })
+                if (app.netBlock<3){
+                    requestURl2(app, url, method, data, cb)
+                }else{
+                    app.netBlock=0;
+                    wx.showModal({
+                        title: '提示',
+                        content: '网络异常,请稍后再试',
+                        showCancel: false,
+                        success: function (res) {
+                            wx.reLaunch({
+                                url: '/pages/index/index'
+                            })
+                        }
+                    })
+                }
+                
             }
 
         }

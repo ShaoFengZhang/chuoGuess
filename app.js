@@ -6,12 +6,15 @@ App({
     },
 
     onShow: function (options) {
-        let _this = this;
-        
+        let _this = this;  
     },
 
     globalData: {
         userInfo: null,
         appid: "wxc89f64e2e55e28c6",
-    }
+        music: wx.createInnerAudioContext(),
+        musicStatus:true,
+    },
+
+    
 })

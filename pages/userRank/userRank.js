@@ -30,6 +30,22 @@ Page({
             title: `${app.shareList[random].title}`,
             path: `pages/index/index?uid=${app.user_id}`,
             imageUrl: `${Loginfunc.QiNiuURl}${app.shareList[random].pic}`,
+            success:function(){
+                if (app.globalData.musicStatus) {
+                    setTimeout(function () {
+                        app.globalData.music.play();
+
+                    }, 200)
+                }
+            },
+            fail:function(){
+                if (app.globalData.musicStatus) {
+                    setTimeout(function () {
+                        app.globalData.music.play();
+
+                    }, 200)
+                }
+            }
         };
     },
 

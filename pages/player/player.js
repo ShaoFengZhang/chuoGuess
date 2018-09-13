@@ -37,7 +37,7 @@ Page({
         console.log('app.globalData.ifshownewuser', app.globalData.ifshownewuser)
         if (!app.globalData.ifshownewuser) {
             this.setData({
-                ifnewuser: app.isnew == 1 ? true : false,
+                ifnewuser: app.success == 0 ? true : false,
             });
         }
 
@@ -184,7 +184,9 @@ Page({
                         icon: 'none',
                     });
                 }
-
+                if (app.globalData.musicStatus) {
+                    app.globalData.music.play();
+                }
 
             },
             fail: function(data) {
@@ -196,6 +198,12 @@ Page({
                     _this.setData({
                         showCountdownMask: true,
                     })
+                }
+                if (app.globalData.musicStatus) {
+                    setTimeout(function () {
+                        app.globalData.music.play();
+
+                    }, 200)
                 }
 
             }
@@ -319,12 +327,9 @@ Page({
         let _this = this;
         let getTheTopicDryUrl = Loginfunc.domin + `api/getproblems3`;
         this.setData({
-            // answerList: [],
             botImgUrl: `/assets/player/mask${app.globalData.hard[this.currentTopic]}.png`,
-            // maskOpacity: 1,
             width: 0,
             hieght: 0,
-            // answershow: 0,
         })
         this.currentTopic++;
         Loginfunc.requestURl(app, getTheTopicDryUrl, "POST", {
@@ -339,6 +344,19 @@ Page({
                     RightCurtainAnimation: _this.RightCurtainAnimation,
                 });
             }
+            if(data==undefined){
+                wx.showModal({
+                    title: '提示',
+                    content: '网络异常,请稍后再试',
+                    showCancel: false,
+                    success: function (res) {
+                        wx.reLaunch({
+                            url: '/pages/index/index'
+                        })
+                    }
+                });
+                return;
+            }
             if (data.code && data.code == 200) {
                 _this.topicNum = data.data.imgid; //题目编号
                 _this.titleArr.push(data.data.imgid); //去重编号
@@ -347,7 +365,7 @@ Page({
                 for (let i = 0; i < answer.length; i++) {
                     let objanswer = {
                         options: answer[i].split(':')[0],
-                        answer: answer[i].split(':')[1].slice(0, 6),
+                        answer: answer[i].split(':')[1]==undefined?'其他':answer[i].split(':')[1].slice(0, 6),
                         showAok: false,
                         showAerror: false,
                     }
@@ -389,9 +407,6 @@ Page({
                         })
                     }, 1880)
                 }
-
-
-
             } else {
                 wx.showModal({
                     title: '提示',

@@ -8,15 +8,15 @@ Page({
         canIUse: wx.canIUse('button.open-type.getUserInfo'),
         ifShowChanceMask: false,
         showNochanceMask: false,
-        musicTxt:'开',
-        musicStatus:true,
-        ifShowRuleMask:false,
+        musicTxt: '开',
+        ifShowRuleMask: false,
     },
 
     onLoad: function() {
+        app.netBlock = 0;
         this.creatEBgMusicAudioFun();
         Loginfunc.wxloginfnc(app, this);
-        this.configshowload=true;
+        this.configshowload = true;
         wx.showLoading({
             title: 'loading',
             mask: true,
@@ -53,11 +53,11 @@ Page({
                 }
             })
         }
-       
+
     },
 
     onShow: function() {
-        let _this=this;
+        let _this = this;
         this.getConfigFun();
     },
 
@@ -70,6 +70,9 @@ Page({
     },
 
     getUserInfo: function(e) {
+        wx.reportAnalytics('stargameclick', {
+            uid: app.user_id,
+        });
         console.log('??????????????', e.detail);
         if (e.detail && e.detail.userInfo) {
             app.globalData.userInfo = e.detail.userInfo
@@ -94,7 +97,7 @@ Page({
         }
     },
 
-    getUserInfo2: function (e) {
+    getUserInfo2: function(e) {
         if (e.detail && e.detail.userInfo) {
             app.globalData.userInfo = e.detail.userInfo
             this.setData({
@@ -107,6 +110,9 @@ Page({
     },
 
     startGame: function(e) {
+        wx.reportAnalytics('stargameclick', {
+            uid: app.user_id,
+        });
         let _this = this;
         let starGameUrl = Loginfunc.domin + `api/start`;
         if (e && parseInt(e.detail.formId) > 0) {
@@ -242,14 +248,22 @@ Page({
                         })
                     }
                 }
-
+                if (app.globalData.musicStatus) {
+                    app.globalData.music.play();
+                }
 
             },
             fail: function(data) {
                 wx.showToast({
                     title: '分享失败',
                     icon: 'none',
-                })
+                });
+                if (app.globalData.musicStatus) {
+                    setTimeout(function() {
+                        app.globalData.music.play();
+                    }, 200)
+                }
+
             }
         };
     },
@@ -268,10 +282,10 @@ Page({
             app.globalData.sharetime = parseInt(data.data.share_game_time);
             app.globalData.score_multiple = parseFloat(data.data.score_multiple);
             app.globalData.daily_cash_count = parseInt(data.data.daily_cash_count);
-            for (let n = 0; n < data.data.share_list.length; n++){
-                if (data.data.share_list[n].name =="index_url"){
+            for (let n = 0; n < data.data.share_list.length; n++) {
+                if (data.data.share_list[n].name == "index_url") {
                     app.globalData.ruleUrl = `${Loginfunc.QiNiuURl}` + data.data.share_list[n].pic;
-                    data.data.share_list.splice(n,1);
+                    data.data.share_list.splice(n, 1);
                 }
             }
             app.shareList = data.data.share_list;
@@ -279,11 +293,11 @@ Page({
                 navAppid: data.data.appid,
                 ruleimg: app.globalData.ruleUrl,
             });
-            if (_this.configshowload){
+            if (_this.configshowload) {
                 wx.hideLoading();
-                _this.configshowload=false;
+                _this.configshowload = false;
             }
-            
+
         });
     },
 
@@ -310,46 +324,41 @@ Page({
         })
     },
 
-    backgroundMusic:function(){
-        if (this.data.musicStatus){
+    backgroundMusic: function() {
+        if (app.globalData.musicStatus) {
             this.setData({
                 musicTxt: '关',
-                musicStatus:false,
             });
-            wx.pauseBackgroundAudio();
-        } else{
+            app.globalData.musicStatus = false;
+            app.globalData.music.stop();
+        } else {
             this.setData({
                 musicTxt: '开',
-                musicStatus: true,
             });
-            this.creatEBgMusicAudioFun();
-        }      
+            app.globalData.musicStatus = true;
+            app.globalData.music.play();
+        }
     },
 
     // 创建背景音乐
-    creatEBgMusicAudioFun: function () {
+    creatEBgMusicAudioFun: function() {
         // this.bgMusicAudio = wx.createInnerAudioContext();
-        // this.bgMusicAudio.autoplay = false;
-        // this.bgMusicAudio.src = 'https://tp.datikeji.com/ccaa/backgroundMusic.mp3';
-        // this.bgMusicAudio.volume = 0.2;
-        // this.bgMusicAudio.loop = true;
-        // this.bgMusicAudio.play();
-
-        wx.playBackgroundAudio({
-            dataUrl: 'https://tp.datikeji.com/ccaa/backgroundMusic.mp3',
-            title: '背景音乐',
-        });
+        app.globalData.music.autoplay = false;
+        app.globalData.music.src = 'https://tp.datikeji.com/ccaa/backgroundMusic.mp3';
+        app.globalData.music.volume = 0.6;
+        app.globalData.music.loop = true;
+        app.globalData.music.play();
     },
 
-    gameRuleFun:function(){
+    gameRuleFun: function() {
         this.setData({
             ifShowRuleMask: true
         });
     },
 
-    switchRuleMask: function () {
+    switchRuleMask: function() {
         this.setData({
             ifShowRuleMask: !this.data.ifShowRuleMask
         });
-    },  
+    },
 })
